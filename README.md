@@ -1,11 +1,11 @@
-#Lets Kill Things
+#Fear the Dice
 A tool for helping manage combat in a turn based environment. Allowing DM's/GM's to control stats such as AC, HP, and damage taken for a group.
 
-Below is a bit of general information for starting and running Lets Kill Things. Further information such as our todo list of features, bugs, and the tools we use can be found in the [wiki](https://github.com/obihann/lets-kill-things/wiki).
+Below is a bit of general information for starting and running Lets Kill Things. Further information such as our todo list of features, bugs, and the tools we use can be found in the [wiki](https://github.com/obihann/fear-the-die/wiki).
 
 ##Table of Contents
 * [Getting Started](#getting-stated)
-* [Wiki](https://github.com/obihann/lets-kill-things/wiki)
+* [Wiki](https://github.com/obihann/fear-the-dice/wiki)
 * [License](#license)
 
 ##Getting Started
