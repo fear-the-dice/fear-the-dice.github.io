@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Lets Kill Things by lets-kill-things</title>
+    <title>Fear the Roll by fear-the-dice</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
@@ -12,26 +12,22 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
+    <a href="http://fearthedice.com"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
     <div class="wrapper">
       <header>
-        <h1>Lets Kill Things</h1>
+        <h1>Fear the Roll</h1>
         <p></p>
-
-
-        <p class="view"><a href="https://github.com/lets-kill-things">View My GitHub Profile</a></p>
+        <p class="view"><img src="https://avatars2.githubusercontent.com/u/12516607?v=3&s=200"></p>
+        <p class="view"><a href="https://github.com/fear-the-dice">GitHub Project</a></p>
+        <p class="view"><a href="https://github.com/fear-the-dice/overview/wiki">Wiki</a></p>
+        <p class="view"><a href="keepiteasy.net/lkt">Demo</a></p>
 
       </header>
       <section>
-        <p>A tool for helping manage combat in a turn based environment. Allowing DM's/GM's to control stats such as AC, HP, and damage taken for a group.</p>
-
-<h2>
-<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h2>
-
-<ul>
-<li><a href="#getting-stated">Getting Started</a></li>
-<li><a href="#license">License</a></li>
-</ul>
+          <h2>A tool for helping manage combat in a turn based environment.</h2>
+          <p>Allowing DM's/GM's to control stats such as AC, HP, and damage taken for a group. Now a DM can forget about the tedious tasks involved with combat and focus on the game.</p>
+          <p>DM View: <img src="https://raw.githubusercontent.com/fear-the-dice/fear-the-dice.github.io/master/images/dm.png"></p>
+          <p>Player View: <img src="https://raw.githubusercontent.com/fear-the-dice/fear-the-dice.github.io/master/images/player.png"></p>
 
 <h2>
 <a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
@@ -40,156 +36,15 @@
 
 <ul>
 <li>
-<a href="https://github.com/lets-kill-things/api">API</a>       - Drakov API server</li>
+<a href="https://github.com/fear-the-dice/overview">Overview</a>       - A detailed overview of how to get started</li>
 <li>
-<a href="https://github.com/lets-kill-things/front-end">Web</a>       - Frontend HTTP server</li>
+<a href="https://github.com/fear-the-dice/api">API</a>       - Drakov API server</li>
 <li>
-<a href="https://github.com/lets-kill-things/socket-server">Socket</a> - Socket.io server</li>
+<a href="https://github.com/fear-the-dice/web">Web</a>       - Frontend HTTP server</li>
+<li>
+<a href="https://github.com/fear-the-dice/socket">Socket</a> - Socket.io server</li>
 </ul>
 
-<h3>
-<a id="front-end" class="anchor" href="#front-end" aria-hidden="true"><span class="octicon octicon-link"></span></a>Front End</h3>
-
-<p>We use Node for a lot of things from build tools to our socket server. To get this setup you will have to run the following commands.</p>
-
-<ul>
-<li>
-<p><strong>Build tools:</strong></p>
-
-<pre><code>$ cd front-end
-$ npm install
-</code></pre>
-</li>
-<li>
-<p><strong>Socket server:</strong></p>
-
-<pre><code>$ cd socket-server
-$ npm install
-</code></pre>
-</li>
-</ul>
-
-<h3>
-<a id="bower" class="anchor" href="#bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower</h3>
-
-<p>We use Bower to manage packages such as jQuery and Backbone.</p>
-
-<p>If you haven't used <a href="http://bower.io/">Bower</a> before, be sure to check out the documentation, as it explains exactly what it does, and all its cool features. You can install Bower with the following command:</p>
-
-<ul>
-<li>
-<p><strong>Installation:</strong> </p>
-
-<pre><code>$ cd front-end
-$ npm install -g bower
-</code></pre>
-</li>
-<li>
-<p><strong>Use:</strong></p>
-
-<blockquote>
-<p>Once you have Bower installed you can run the following command in the "public" folder to setup all the requirements for this project:</p>
-</blockquote>
-
-<pre><code>$ cd front-end
-$ bower install
-</code></pre>
-</li>
-</ul>
-
-<h3>
-<a id="grunt" class="anchor" href="#grunt" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grunt</h3>
-
-<p>We use Grunt to compile source, and also watch folders during development.
-If you haven't used <a href="http://gruntjs.com/">Grunt</a> before, be sure to check out the <a href="http://gruntjs.com/getting-started">Getting Started</a> guide. You can install Grunt with the following command:</p>
-
-<ul>
-<li>
-<p><strong>Installation:</strong></p>
-
-<pre><code>$ npm install -g grunt-cli 
-</code></pre>
-</li>
-<li>
-<p><strong>Use:</strong></p>
-
-<blockquote>
-<p>Once you have Grunt installed you can run the following command to build the site (note grunt will automatically build into the "public" folder, as specificed in "Gruntfile.js"):</p>
-</blockquote>
-
-<pre><code>$ cd front-end
-$ grunt 
-</code></pre>
-</li>
-</ul>
-
-<h3>
-<a id="drakov" class="anchor" href="#drakov" aria-hidden="true"><span class="octicon octicon-link"></span></a>Drakov</h3>
-
-<p>We currently use a mock API server (Drakov), whhich reads in <a href="https://apiblueprint.org/">API Blueprint</a> to generate a mock server.</p>
-
-<ul>
-<li>
-<p><strong>Installation:</strong></p>
-
-<pre><code>$ npm install -g drakov
-</code></pre>
-</li>
-<li>
-<p><strong>Use:</strong></p>
-
-<pre><code>$ cd api
-$ drakov -f api/server.MD
-</code></pre>
-</li>
-</ul>
-
-<h3>
-<a id="supervisor" class="anchor" href="#supervisor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supervisor</h3>
-
-<p>Supervisor manages our various processes for us. If you don't already have it installed you can do so with the Python tool easy_install:</p>
-
-<ul>
-<li>
-<p>*<em>Installation: *</em></p>
-
-<pre><code>$ easy_install supervisor
-</code></pre>
-</li>
-<li>
-<p><strong>Setup:</strong></p>
-
-<blockquote>
-<p>From your project folter, you are going to have to create a few folders for supervisor to use:</p>
-</blockquote>
-
-<pre><code>$ mkdir logs
-$ mkdir tmp
-</code></pre>
-</li>
-<li>
-<p><strong>Use:</strong></p>
-
-<blockquote>
-<p>Once you have it installed you can go ahead and run supervisor, then feed it some commands:</p>
-</blockquote>
-
-<pre><code>$ cd supervisor
-$ sudo supervisord -c supervisor/supervisord.conf
-$ supervisorctl
-api                     STOPPED   Not started
-web                     STOPPED   Not started
-socket                  STOPPED   Not started
-supervisor&gt; start api
-api: started
-supervisor&gt; start socket
-socket: started
-supervisor&gt; start web
-web: started
-supervisor&gt;
-</code></pre>
-</li>
-</ul>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
