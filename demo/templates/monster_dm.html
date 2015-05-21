@@ -1,0 +1,35 @@
+
+<div class="col-md-3"><img src="{{thumb}}" class="monster__thumb"/></div>
+<div class="col-md-6">
+  <div class="row">
+    <h2 class="monster__name">{{monster}}</h2><span class="monster__name--edit">
+      <input class="input__monster"/><i class="glyphicon glyphicon-check"></i></span>
+  </div>
+  <div class="row">
+    <div class="col-md-4"><span stat="initiative" class="monster__stat">Initiative:</span><span class="monster__stat--value">{{initiative}}</span><span class="monster__stat--edit">
+        <input type="number" class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-md-4"><span stat="ac" class="monster__stat">AC:</span><span class="monster__stat--value">{{ac}}</span><span class="monster__stat--edit">
+        <input type="number" class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-md-4"><span stat="speed" class="monster__stat">Speed:</span><span class="monster__stat--value">{{speed}}</span><span class="monster__stat--edit">
+        <input type="number" class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"><span stat="hp" class="monster__stat">HP:</span><span class="monster__stat--value">{{hp}}</span><span class="monster__stat--edit">
+        <input type="number" class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-md-4"><span stat="damage" class="monster__stat">Damage Taken:</span><span class="monster__stat--value">{{damage}}</span></div>
+    <div class="col-md-4"><span stat="health" class="monster__stat">Current Health:</span><span class="monster__stat--value">{{health}}</span></div>
+  </div>
+</div>
+<div class="col-md-3">
+  <div class="row">
+    <button class="monster__hit">Hit Me!</button><span class="monster__hit--edit">
+      <input type="number" value="0" class="input__hit"/><i class="glyphicon glyphicon-check"></i></span>
+  </div>
+  <div class="row">
+    <button class="monster__heal">Heal Me!</button><span class="monster__heal--edit">
+      <input type="number" value="0" class="input__heal"/><i class="glyphicon glyphicon-check"></i></span>
+  </div>
+  <div class="row">
+    <button class="monster__delete">Delete Me!</button>
+  </div>
+</div>
