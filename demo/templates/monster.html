@@ -1,15 +1,14 @@
 
 <div class="col-md-3"><img src="{{thumb}}" class="monster__thumb"/></div>
-<div class="col-md-6">
+<div class="col-md-8">
   <div class="row"></div>
-  <h2 class="monster__name">{{monster}}</h2><span class="monster__name--edit">
-    <input class="input__monster"/><i class="glyphicon glyphicon-check"></i></span>
+  <h2 class="monster__name--locked">{{monster}}</h2>
   <div class="row"></div>
-  <div class="col-md-4"><span stat="initiative" class="monster__stat">Initiative:</span><span class="monster__stat--value">{{initiative}}</span></div>
-  <div class="col-md-4"><span stat="damage" class="monster__stat">Damage Taken:</span><span class="monster__stat--value">{{damage}}</span></div>
+  <div class="col-md-4"><span stat="initiative" class="monster__stat--locked">Initiative:</span><span class="monster__stat--value--locked">{{initiative}}</span></div>
+  <div class="col-md-4"><span stat="damage" class="monster__stat--locked">Damage Taken:</span><span class="monster__stat--value--locked">{{damage}}</span></div>
 </div>
-<div class="col-md-3">
+<div class="col-md-1">
   <div class="row"></div>
-  <button class="monster__hit">Hit Me!</button><span class="monster__hit--edit">
+  <button alt="Hit Me!" class="glyphicon glyphicon-fire monster__hit"></button><span class="monster__hit--edit">
     <input type="number" value="0" class="input__hit"/><i class="glyphicon glyphicon-check"></i></span>
 </div>
