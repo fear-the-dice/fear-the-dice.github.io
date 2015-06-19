@@ -1,4 +1,4 @@
-[![GPL](https://img.shields.io/badge/license-GPLv2-green.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
+[![GitHub license](https://img.shields.io/github/license/fear-the-dice/fear-the-dice.github.io.svg)]()
 
 #Fear the Dice
 A tool for helping manage combat in a turn based environment. Allowing DM's/GM's to control stats such as AC, HP, and damage taken for a group.
