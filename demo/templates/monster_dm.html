@@ -1,35 +1,43 @@
 
-<div class="col-md-3"><img src="{{thumb}}" class="monster__thumb"/></div>
-<div class="col-md-8">
+<div class="col-xs-12">
   <div class="row">
-    <h2 class="monster__name">{{monster}}</h2><span class="monster__name--edit">
-      <input class="input__monster"/><i class="glyphicon glyphicon-check"></i></span>
+    <div class="col-xs-4 col-md-6 text-left">
+      <h2 class="monster__name">{{monster}}</h2><span class="monster__name--edit">
+        <input class="input__monster"/><i class="glyphicon glyphicon-check"></i></span>
+    </div>
+    <div class="col-xs-8 col-md-6 text-right">
+      <button data-toggle="tooltip" title="Hit Me!" class="glyphicon glyphicon-fire monster__hit"></button><span class="monster__hit--edit">
+        <input type="number" value="0" class="input__hit"/><i class="glyphicon glyphicon-check"></i></span>
+      <button data-toggle="tooltip" title="Heal Me!" class="glyphicon glyphicon-heart monster__heal"></button><span class="monster__heal--edit">
+        <input type="number" value="0" class="input__heal"/><i class="glyphicon glyphicon-check"></i></span>
+      <button data-toggle="tooltip" title="Edit Me!" class="glyphicon glyphicon-pencil monster__edit"></button>
+      <button data-toggle="tooltip" title="Delete Me!" class="glyphicon glyphicon-remove monster__delete"></button>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-4"><span stat="ac" class="monster__stat lead">AC:</span><span class="monster__stat--value lead">{{ac}}</span><span class="monster__stat--edit">
+    <div class="col-xs-2"><span stat="ac" class="monster__stat">AC:</span><span class="monster__stat--value">{{ac}}</span><span class="monster__stat--edit">
         <input type="number" class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
-    <div class="col-md-4"><span stat="hp" class="monster__stat lead">HP:</span><span class="monster__stat--value lead">{{hp}}</span><span class="monster__stat--edit">
+    <div class="col-xs-2"><span stat="hp" class="monster__stat">HP:</span><span class="monster__stat--value">{{hp}}</span><span class="monster__stat--edit">
         <input type="number" class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
-    <div class="col-md-4"><span stat="speed" class="monster__stat--locked lead">Speed:</span><span class="monster__stat--value--locked lead">{{speed}}</span><span class="monster__stat--edit">
+    <div class="col-xs-2"><span stat="speed" class="monster__stat">Speed:</span><span class="monster__stat--value">{{speed}}</span><span class="monster__stat--edit">
+        <input class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-xs-2"><span stat="initiative" class="monster__stat">Initiative:</span><span class="monster__stat--value">{{initiative}}</span><span class="monster__stat--edit">
         <input type="number" class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-xs-2"><span stat="damage" class="monster__stat--locked">Damage Taken:</span><span class="monster__stat--value--locked">{{damage}}</span></div>
+    <div class="col-xs-2"><span stat="health" class="monster__stat--locked">Current Health:</span><span class="monster__stat--value--locked">{{health}}</span></div>
   </div>
   <div class="row">
-    <div class="col-md-4"><span stat="initiative" class="monster__stat">Initiative:</span><span class="monster__stat--value">{{initiative}}</span><span class="monster__stat--edit">
-        <input type="number" class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
-    <div class="col-md-4"><span stat="damage" class="monster__stat--locked">Damage Taken:</span><span class="monster__stat--value--locked">{{damage}}</span></div>
-    <div class="col-md-4"><span stat="health" class="monster__stat--locked">Current Health:</span><span class="monster__stat--value--locked">{{health}}</span></div>
-  </div>
-</div>
-<div class="col-md-1">
-  <div class="row">
-    <button alt="Hit Me!" class="glyphicon glyphicon-fire monster__hit"></button><span class="monster__hit--edit">
-      <input type="number" value="0" class="input__hit"/><i class="glyphicon glyphicon-check"></i></span>
-  </div>
-  <div class="row">
-    <button alt="Heal Me!" class="glyphicon glyphicon-heart monster__heal"></button><span class="monster__heal--edit">
-      <input type="number" value="0" class="input__heal"/><i class="glyphicon glyphicon-check"></i></span>
-  </div>
-  <div class="row">
-    <button alt="Delete Me!" class="glyphicon glyphicon-remove monster__delete"></button>
+    <div class="col-xs-2"><span stat="str" class="monster__stat">STR:</span><span class="monster__stat--value">{{str}}</span><span class="monster__stat--edit">
+        <input class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-xs-2"><span stat="dex" class="monster__stat">DEX:</span><span class="monster__stat--value">{{dex}}</span><span class="monster__stat--edit">
+        <input class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-xs-2"><span stat="con" class="monster__stat">CON:</span><span class="monster__stat--value">{{con}}</span><span class="monster__stat--edit">
+        <input class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-xs-2"><span stat="int" class="monster__stat">INT:</span><span class="monster__stat--value">{{int}}</span><span class="monster__stat--edit">
+        <input class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-xs-2"><span stat="wis" class="monster__stat">WIS:</span><span class="monster__stat--value">{{wis}}</span><span class="monster__stat--edit">
+        <input class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
+    <div class="col-xs-2"><span stat="cha" class="monster__stat">CHA:</span><span class="monster__stat--value">{{cha}}</span><span class="monster__stat--edit">
+        <input class="input__stat"/><i class="glyphicon glyphicon-check"></i></span></div>
   </div>
 </div>

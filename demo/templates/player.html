@@ -1,17 +1,16 @@
 
-<div class="col-md-3"><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/140.jpg" class="player__thumb"/></div>
-<div class="col-md-8">
+<div class="col-xs-11">
   <div class="row">
     <h2 class="player__name--locked">{{character}}</h2>
     <h3 class="player__name--locked">({{name}})</h3>
   </div>
   <div class="row">
-    <div class="col-md-4"><span stat="initiative" class="player__stat--locked">Initiative:</span><span class="player__stat--value--locked">{{initiative}}</span></div>
-    <div class="col-md-4"><span stat="damage" class="player__stat--locked">Damage Taken:</span><span class="player__stat--value--locked">{{damage}}</span></div>
+    <div class="col-xs-4"><span stat="initiative" class="player__stat--locked">Initiative:</span><span class="player__stat--value--locked">{{initiative}}</span></div>
+    <div class="col-xs-4"><span stat="damage" class="player__stat--locked">Damage Taken:</span><span class="player__stat--value--locked">{{damage}}</span></div>
   </div>
 </div>
-<div class="col-md-1">
-  <div class="row">
-    <button alt="Take Control" class="glyphicon glyphicon-user player__control"></button>
+<div class="col-xs-1">
+  <div class="row text-right">
+    <button data-toggle="tooltip" title="Take Control" class="glyphicon glyphicon-user player__control"></button>
   </div>
 </div>
