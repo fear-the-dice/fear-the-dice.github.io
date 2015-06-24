@@ -1,0 +1,374 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Fear the Dice!</title><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  margin-left: 3px;
+  color: #c7254e;
+  background-color: rgba(255,255,255,0.7);
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item:hover {
+  background-color: #f8f8f8;
+  border-left: 2px solid #555;
+  padding-left: 15px;
+}
+.indent {
+  display: block;
+  text-indent: 16px;
+}
+.list-group-item {
+  padding-left: 16px;
+}
+.list-group-item .toggle .open {
+  display: block;
+}
+.list-group-item .toggle .closed {
+  display: none;
+}
+.list-group-item.collapsed .toggle .open {
+  display: none;
+}
+.list-group-item.collapsed .toggle .closed {
+  display: block;
+}
+a.list-group-item {
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  font-size: 15px;
+  background-color: #f5f5f5;
+}
+a.list-group-item.heading:hover {
+  background-color: #f8f8f8;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+.list-group-item a span.closed {
+  display: none;
+}
+.list-group-item a span.open {
+  display: block;
+}
+.list-group-item a.collapsed span.closed {
+  display: block;
+}
+.list-group-item a.collapsed span.open {
+  display: none;
+}
+#nav {
+  width: inherit;
+  margin-top: 38px;
+  max-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    max-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a data-toggle="" data-target="#api-menu" href="#api" class="list-group-item heading collapsed">API</a><div id="api-menu"><a href="#api-monsters" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Monsters</a><a href="#api-monsters-options" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge"><i class="fa fa-dot-circle-o"></i></span><span class="indent">Get API Options</span></a><a href="#api-monsters-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Get Monsters</span></a><a href="#api-monsters-post" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span><span class="indent">New Monster</span></a><a href="#api-monster" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Monster</a><a href="#api-monster-options" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge"><i class="fa fa-dot-circle-o"></i></span><span class="indent">Get API Options</span></a><a href="#api-monster-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Get Monster</span></a><a href="#api-monster-put" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span><span class="indent">Edit Monster</span></a><a href="#api-monster-delete" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span><span class="indent">Delete Monster</span></a><a href="#api-players" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Players</a><a href="#api-players-options" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge"><i class="fa fa-dot-circle-o"></i></span><span class="indent">Get API Options</span></a><a href="#api-players-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Get Players</span></a><a href="#api-players-post" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-success"><i class="fa fa-plus"></i></span><span class="indent">New Player</span></a><a href="#api-player" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item">Player</a><a href="#api-player-options" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge"><i class="fa fa-dot-circle-o"></i></span><span class="indent">Get API Options</span></a><a href="#api-player-get" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-info"><i class="fa fa-arrow-down"></i></span><span class="indent">Get Player</span></a><a href="#api-player-put" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-warning"><i class="fa fa-pencil"></i></span><span class="indent">Edit Player</span></a><a href="#api-player-delete" style="border-top-left-radius: 0; border-top-right-radius: 0" class="list-group-item"><span class="badge alert-danger"><i class="fa fa-times"></i></span><span class="indent">Delete Player</span></a></div></div><p style="text-align: center; word-wrap: break-word;"><a href="fear-the-dice-api.herokuapp.com/api">fear-the-dice-api.herokuapp.com/api</a></p></nav></div><div class="col-md-8"><div><header><div class="page-header"><h1 id="top">Fear the Dice!</h1></div></header><div class="description"><p>A tool for helping manage combat in a turn based environment. Allowing DM’s/GM’s to control stats such as AC, HP, and ‘damage’ taken for a group.</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="api">API&nbsp;<a href="#api"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="api-monsters">Monsters&nbsp;<a href="#api-monsters"><i class="fa fa-link"></i></a></h4><p>Monsters resource for accessing all monsters as a group.</p>
+<section id="api-monsters-options" class="panel panel-default"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get API Options</span></div><div style="float:left"><a href="#api-monsters-options" class="btn btn-xs btn-default">OPTIONS</a></div><div style="overflow:hidden"><code>/monsters</code></div></div><div class="panel-body"><p>Retrieve all options avaliable for this specific resource.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>204</code></strong><a data-toggle="collapse" data-target="#4347268fa4cafee7b3723d54a44c87e9" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="4347268fa4cafee7b3723d54a44c87e9" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Access-Control-Allow-Headers</span>: <span class="hljs-string">Origin,Accept,Content-Type,Authorization</span><br><span class="hljs-attribute">Access-Control-Allow-Methods</span>: <span class="hljs-string">GET,POST,PUT,DELETE,HEAD</span><br></code></pre></li></ul></section><section id="api-monsters-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Monsters</span></div><div style="float:left"><a href="#api-monsters-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/monsters</code></div></div><div class="panel-body"><p>Retrieve all monsters in a JSON array.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#9d6a2c20f778952160133e092b8ba362" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="9d6a2c20f778952160133e092b8ba362" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#91576bd61362a6553d7880fd631149f4" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="91576bd61362a6553d7880fd631149f4" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code> [
+   {
+     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e45fc60a3dca513e6265e"</span></span>,
+     "<span class="hljs-attribute">monster</span>": <span class="hljs-value"><span class="hljs-string">"Black Bear"</span></span>,
+     "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+     "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+     "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+     "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+     "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-number">30</span></span>,
+     "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+     "<span class="hljs-attribute">challange</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+     "<span class="hljs-attribute">xp</span>": <span class="hljs-value"><span class="hljs-number">25</span></span>,
+     "<span class="hljs-attribute">manual</span>": <span class="hljs-value"><span class="hljs-number">343</span></span>,
+     "<span class="hljs-attribute">str</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">dex</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">con</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">int</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">wis</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">cha</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span>
+   </span>},
+   {
+     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e45fc60a3dca513e6265f"</span></span>,
+     "<span class="hljs-attribute">monster</span>": <span class="hljs-value"><span class="hljs-string">"Bandit"</span></span>,
+     "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+     "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+     "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+     "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+     "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-number">30</span></span>,
+     "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+     "<span class="hljs-attribute">challange</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+     "<span class="hljs-attribute">xp</span>": <span class="hljs-value"><span class="hljs-number">25</span></span>,
+     "<span class="hljs-attribute">manual</span>": <span class="hljs-value"><span class="hljs-number">343</span></span>,
+     "<span class="hljs-attribute">str</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">dex</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">con</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">int</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">wis</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+     "<span class="hljs-attribute">cha</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span>
+   </span>}
+ ]
+</code></pre></li></ul></section><section id="api-monsters-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">New Monster</span></div><div style="float:left"><a href="#api-monsters-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/monsters</code></div></div><div class="panel-body"><p>Create a new monster by passing the JSON object to the server.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#9cba05f6854195b95e43e758e5b39436" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="9cba05f6854195b95e43e758e5b39436" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">monster</span>": <span class="hljs-value"><span class="hljs-string">"Bugbear Chief"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">27</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">65</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">65</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-string">"30"</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">challange</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">xp</span>": <span class="hljs-value"><span class="hljs-number">450</span></span>,
+    "<span class="hljs-attribute">manual</span>": <span class="hljs-value"><span class="hljs-number">33</span></span>,
+    "<span class="hljs-attribute">str</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+    "<span class="hljs-attribute">dex</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+    "<span class="hljs-attribute">con</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+    "<span class="hljs-attribute">int</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+    "<span class="hljs-attribute">wis</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span></span>,
+    "<span class="hljs-attribute">cha</span>": <span class="hljs-value"><span class="hljs-string">"15 (+1)"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#891c6c5b971c1fc15238e60fe3d3923f" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="891c6c5b971c1fc15238e60fe3d3923f" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e45fc60a3dca513e6265d"</span></span>,
+    "<span class="hljs-attribute">monster</span>": <span class="hljs-value"><span class="hljs-string">"Bugbear Chief"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">27</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">65</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">65</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-string">"30"</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">challange</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">xp</span>": <span class="hljs-value"><span class="hljs-number">450</span></span>,
+    "<span class="hljs-attribute">manual</span>": <span class="hljs-value"><span class="hljs-number">33</span>
+</span>}
+</code></pre></li></ul></section><h4 id="api-monster">Monster&nbsp;<a href="#api-monster"><i class="fa fa-link"></i></a></h4><p>Monster resource for accessing individual monster objects.</p>
+<section id="api-monster-options" class="panel panel-default"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get API Options</span></div><div style="float:left"><a href="#api-monster-options" class="btn btn-xs btn-default">OPTIONS</a></div><div style="overflow:hidden"><code>/monsters/{monster_id}</code></div></div><div class="panel-body"><p>Retrieve all options avaliable for this specific resource.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>monster_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>555e45fc60a3dca513e62661</span></span></dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#747c5ab321c3d9b1cc4ec615bea430e3" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="747c5ab321c3d9b1cc4ec615bea430e3" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>204</code></strong><a data-toggle="collapse" data-target="#adb39c3cb4f55c50d40c43dd8700d0c9" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="adb39c3cb4f55c50d40c43dd8700d0c9" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Access-Control-Allow-Headers</span>: <span class="hljs-string">Origin,Accept,Content-Type,Authorization</span><br><span class="hljs-attribute">Access-Control-Allow-Methods</span>: <span class="hljs-string">GET,POST,PUT,DELETE,HEAD</span><br></code></pre></li></ul></section><section id="api-monster-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Monster</span></div><div style="float:left"><a href="#api-monster-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/monsters/{monster_id}</code></div></div><div class="panel-body"><p>Retrieve a specific monster.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>monster_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>555e45fc60a3dca513e62661</span></span></dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#9727402ea2ec070afcb0a6c1615e5704" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="9727402ea2ec070afcb0a6c1615e5704" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#427da12145667e03f22b250f29b885bc" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="427da12145667e03f22b250f29b885bc" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e45fc60a3dca513e6265d"</span></span>,
+    "<span class="hljs-attribute">monster</span>": <span class="hljs-value"><span class="hljs-string">"Bugbear Chief"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">27</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">65</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">65</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-number">30</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">challange</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">xp</span>": <span class="hljs-value"><span class="hljs-number">450</span></span>,
+    "<span class="hljs-attribute">manual</span>": <span class="hljs-value"><span class="hljs-number">33</span>
+</span>}
+</code></pre></li></ul></section><section id="api-monster-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Edit Monster</span></div><div style="float:left"><a href="#api-monster-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/monsters/{monster_id}</code></div></div><div class="panel-body"><p>Edit an existing monster by passing a new JSON object. This will replace the existing object so it is wise to ensure all fields are set.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>monster_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>555e45fc60a3dca513e62661</span></span></dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#cb4944adb2c696053c9c53ac44439e7a" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="cb4944adb2c696053c9c53ac44439e7a" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e45fc60a3dca513e62661"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-string">"30/50"</span></span>,
+    "<span class="hljs-attribute">monster</span>": <span class="hljs-value"><span class="hljs-string">"Draft Horse"</span></span>,
+    "<span class="hljs-attribute">challange</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">xp</span>": <span class="hljs-value"><span class="hljs-number">50</span></span>,
+    "<span class="hljs-attribute">manual</span>": <span class="hljs-value"><span class="hljs-number">321</span></span>,
+    "<span class="hljs-attribute">str</span>": <span class="hljs-value"><span class="hljs-string">"14 (+1)"</span></span>,
+    "<span class="hljs-attribute">dex</span>": <span class="hljs-value"><span class="hljs-string">"14 (+1)"</span></span>,
+    "<span class="hljs-attribute">con</span>": <span class="hljs-value"><span class="hljs-string">"10"</span></span>,
+    "<span class="hljs-attribute">int</span>": <span class="hljs-value"><span class="hljs-string">"9 (-1)"</span></span>,
+    "<span class="hljs-attribute">wis</span>": <span class="hljs-value"><span class="hljs-string">"(16 (+2)"</span></span>,
+    "<span class="hljs-attribute">cha</span>": <span class="hljs-value"><span class="hljs-string">"(16 (+2)"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#feaf3f8665afb93f554c797207c13257" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="feaf3f8665afb93f554c797207c13257" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e45fc60a3dca513e62661"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-string">"30/50"</span></span>,
+    "<span class="hljs-attribute">monster</span>": <span class="hljs-value"><span class="hljs-string">"Draft Horse"</span></span>,
+    "<span class="hljs-attribute">challange</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">xp</span>": <span class="hljs-value"><span class="hljs-number">50</span></span>,
+    "<span class="hljs-attribute">manual</span>": <span class="hljs-value"><span class="hljs-number">321</span></span>,
+    "<span class="hljs-attribute">str</span>": <span class="hljs-value"><span class="hljs-string">"14 (+1)"</span></span>,
+    "<span class="hljs-attribute">dex</span>": <span class="hljs-value"><span class="hljs-string">"14 (+1)"</span></span>,
+    "<span class="hljs-attribute">con</span>": <span class="hljs-value"><span class="hljs-string">"10"</span></span>,
+    "<span class="hljs-attribute">int</span>": <span class="hljs-value"><span class="hljs-string">"9 (-1)"</span></span>,
+    "<span class="hljs-attribute">wis</span>": <span class="hljs-value"><span class="hljs-string">"(16 (+2)"</span></span>,
+    "<span class="hljs-attribute">cha</span>": <span class="hljs-value"><span class="hljs-string">"(16 (+2)"</span>
+</span>}
+</code></pre></li></ul></section><section id="api-monster-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Delete Monster</span></div><div style="float:left"><a href="#api-monster-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/monsters/{monster_id}</code></div></div><div class="panel-body"><p>Delete an existing monster.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>monster_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>555e45fc60a3dca513e62661</span></span></dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#920e05662d234ba2e5cb9a23bfbb2c92" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="920e05662d234ba2e5cb9a23bfbb2c92" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9ae95f85ac2bf04f6823784fd07da5cc" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="9ae95f85ac2bf04f6823784fd07da5cc" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/plain; charset=utf-8</span><br></code></pre></li></ul></section><h4 id="api-players">Players&nbsp;<a href="#api-players"><i class="fa fa-link"></i></a></h4><p>Players resource for accessing all players as a group.</p>
+<section id="api-players-options" class="panel panel-default"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get API Options</span></div><div style="float:left"><a href="#api-players-options" class="btn btn-xs btn-default">OPTIONS</a></div><div style="overflow:hidden"><code>/players</code></div></div><div class="panel-body"><p>Retrieve all options avaliable for this specific resource.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>204</code></strong><a data-toggle="collapse" data-target="#cfa77f2cd2e6bfb37f4b6b40b3c8bc76" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="cfa77f2cd2e6bfb37f4b6b40b3c8bc76" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Access-Control-Allow-Headers</span>: <span class="hljs-string">Origin,Accept,Content-Type,Authorization</span><br><span class="hljs-attribute">Access-Control-Allow-Methods</span>: <span class="hljs-string">GET,POST,PUT,DELETE,HEAD</span><br></code></pre></li></ul></section><section id="api-players-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Players</span></div><div style="float:left"><a href="#api-players-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/players</code></div></div><div class="panel-body"><p>Retrieve all players in a JSON array.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#eabc5682ba4dea684f0922f3f797a6db" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="eabc5682ba4dea684f0922f3f797a6db" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#2da81b0d1357c6f1259fb2765a0e895a" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="2da81b0d1357c6f1259fb2765a0e895a" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code> [
+   {
+     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e460260a3dca513e6266f"</span></span>,
+     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Robin"</span></span>,
+     "<span class="hljs-attribute">character</span>": <span class="hljs-value"><span class="hljs-string">"Strife"</span></span>,
+     "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+     "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+     "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+     "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+     "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-number">25</span></span>,
+     "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+   </span>},
+   {
+     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e460260a3dca513e6266e"</span></span>,
+     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Shawn G."</span></span>,
+     "<span class="hljs-attribute">character</span>": <span class="hljs-value"><span class="hljs-string">"M.F. Jones"</span></span>,
+     "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+     "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+     "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+     "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+     "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-number">25</span></span>,
+     "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+   </span>}
+ ]
+</code></pre></li></ul></section><section id="api-players-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">New Player</span></div><div style="float:left"><a href="#api-players-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/players</code></div></div><div class="panel-body"><p>Create a new player by passing the JSON object to the server.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#bcc960c6b4ce204588d054b83a011366" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="bcc960c6b4ce204588d054b83a011366" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Robin"</span></span>,
+    "<span class="hljs-attribute">character</span>": <span class="hljs-value"><span class="hljs-string">"Strife"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-number">25</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#6552005c70cd241a7a64771a6c5e3f9f" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="6552005c70cd241a7a64771a6c5e3f9f" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e460260a3dca513e6266f"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Robin"</span></span>,
+    "<span class="hljs-attribute">character</span>": <span class="hljs-value"><span class="hljs-string">"Strife"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-number">25</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+</span>}
+</code></pre></li></ul></section><h4 id="api-player">Player&nbsp;<a href="#api-player"><i class="fa fa-link"></i></a></h4><p>Player resource for accessing individual player objects.</p>
+<section id="api-player-options" class="panel panel-default"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get API Options</span></div><div style="float:left"><a href="#api-player-options" class="btn btn-xs btn-default">OPTIONS</a></div><div style="overflow:hidden"><code>/players/{player_id}</code></div></div><div class="panel-body"><p>Retrieve all options avaliable for this specific resource.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>player_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>555e460260a3dca513e6266d</span></span></dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>204</code></strong><a data-toggle="collapse" data-target="#e70bbb0d70952d01c99fad38f3a631d6" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="e70bbb0d70952d01c99fad38f3a631d6" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Access-Control-Allow-Headers</span>: <span class="hljs-string">Origin,Accept,Content-Type,Authorization</span><br><span class="hljs-attribute">Access-Control-Allow-Methods</span>: <span class="hljs-string">GET,POST,PUT,DELETE,HEAD</span><br></code></pre></li></ul></section><section id="api-player-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Get Player</span></div><div style="float:left"><a href="#api-player-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/players/{player_id}</code></div></div><div class="panel-body"><p>Retrieve a specific player.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>player_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>555e460260a3dca513e6266d</span></span></dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#28ea1e8c81e85ba55abf3a1b7ba8144f" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="28ea1e8c81e85ba55abf3a1b7ba8144f" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#f2ff15b9bde30c9a2f7bde1ad9d74651" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="f2ff15b9bde30c9a2f7bde1ad9d74651" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e460260a3dca513e6266f"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Robin"</span></span>,
+    "<span class="hljs-attribute">character</span>": <span class="hljs-value"><span class="hljs-string">"Strife"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-number">25</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+</span>}
+</code></pre></li></ul></section><section id="api-player-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Edit Player</span></div><div style="float:left"><a href="#api-player-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/players/{player_id}</code></div></div><div class="panel-body"><p>Edit an existing player by passing a new JSON object. This will replace the existing object so it is wise to ensure all fields are set.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>player_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>555e460260a3dca513e6266d</span></span></dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#234963bd06a932b7d0cfb9a88e166115" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="234963bd06a932b7d0cfb9a88e166115" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e460260a3dca513e6266d"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">20</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jamie"</span></span>,
+    "<span class="hljs-attribute">character</span>": <span class="hljs-value"><span class="hljs-string">"Thomas"</span></span>,
+    "<span class="hljs-attribute">thumb</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#3233ca7a4fb515222fa6bb3864ab7746" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="3233ca7a4fb515222fa6bb3864ab7746" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json; charset=utf-8</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"555e460260a3dca513e6266d"</span></span>,
+    "<span class="hljs-attribute">initiative</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">ac</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">hp</span>": <span class="hljs-value"><span class="hljs-number">20</span></span>,
+    "<span class="hljs-attribute">health</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+    "<span class="hljs-attribute">damage</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">speed</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jamie"</span></span>,
+    "<span class="hljs-attribute">character</span>": <span class="hljs-value"><span class="hljs-string">"Thomas"</span></span>,
+    "<span class="hljs-attribute">thumb</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}
+</code></pre></li></ul></section><section id="api-player-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Delete Player</span></div><div style="float:left"><a href="#api-player-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/players/{player_id}</code></div></div><div class="panel-body"><p>Delete an existing player.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>player_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>555e460260a3dca513e6266d</span></span></dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#48e009f7895b2322e72a4a9e4f934487" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="48e009f7895b2322e72a4a9e4f934487" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMzY5YmNmNy01NjIyLTQzNWItYjNiMS0wOGJjYTEwMjk2NmYiLCJpYXQiOjg2NDAwLCJzdWIiOiI4MjA1ZDNiMi0zZTczLTQzMmItYjdlYi1iNzNmNzM4MThkODMiLCJhdWQiOiIqLmZlYXJ0aGVkaWNlLmNvbSIsImlzcyI6ImF1dGguZmVhcnRoZWRpY2UuY29tIn0.Q15jrWjrieoyq5n5KuOmbuqv5-9tWk3GYHPaDh7pLj8</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e3a5036bf3de0a79272e9846cefa9e68" class="pull-right collapsed"><span class="closed">Show</span><span class="open">Hide</span></a></li><li id="e3a5036bf3de0a79272e9846cefa9e68" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/plain; charset=utf-8</span><br></code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 24 Jun 2015</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="//code.jquery.com/jquery-1.11.0.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>
