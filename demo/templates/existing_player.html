@@ -1,0 +1,28 @@
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h2>Edit Player</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 text-right">
+    <button class="new-player__save glyphicon glyphicon-floppy-save"></button>
+    <button class="new-player__cancel glyphicon glyphicon-remove"></button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-3"><span class="character__name">Character:</span><span class="character__name--edit">
+          <input value="{{character}}" class="input__character"/><i class="glyphicon glyphicon-check"></i></span></div>
+      <div class="col-xs-3"><span class="player__name">Player:</span><span class="player__name--edit">
+          <input value="{{name}}" class="input__player"/><i class="glyphicon glyphicon-check"></i></span></div>
+      <div class="col-xs-2"><span stat="ac" class="player__stat">AC:</span><span class="player__stat--edit">
+          <input stat="ac" type="number" value="{{ac}}" class="input__stat"/></span></div>
+      <div class="col-xs-2"><span stat="hp" class="player__stat">HP:</span><span class="player__stat--edit">
+          <input stat="hp" type="number" value="{{hp}}" class="input__stat"/></span></div>
+      <div class="col-xs-2"><span stat="speed" class="player__stat">Speed:</span><span class="player__stat--edit">
+          <input stat="speed" value="{{speed}}" class="input__stat"/></span></div>
+    </div>
+  </div>
+</div>
